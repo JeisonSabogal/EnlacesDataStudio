@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * {
       box-sizing: border-box;
@@ -17,10 +16,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Icono 'i' idéntico al actual */
+    /* Icono 'i' del tamaño exacto del recuadro */
     .badge-btn {
       width: 26px;
       height: 26px;
@@ -37,117 +35,35 @@
       cursor: pointer;
       border: none;
       outline: none;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.25);
       transition: background-color 0.2s, transform 0.15s;
     }
     .badge-btn:hover {
       background-color: #1557b0;
-      transform: scale(1.08);
-    }
-
-    /* Ventana emergente modal que flota por encima de todo */
-    dialog {
-      border: none;
-      border-radius: 10px;
-      padding: 0;
-      width: 90vw;
-      max-width: 440px;
-      background: #ffffff;
-      color: #202124;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
-      outline: none;
-    }
-    dialog::backdrop {
-      background: rgba(0, 0, 0, 0.35);
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 18px;
-      border-bottom: 1px solid #ebebeb;
-    }
-    .modal-header h3 {
-      font-size: 14px;
-      font-weight: 700;
-      color: #1a73e8;
-    }
-    .close-btn {
-      background: none;
-      border: none;
-      font-size: 18px;
-      color: #5f6368;
-      cursor: pointer;
-      font-weight: bold;
-      line-height: 1;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-    .close-btn:hover {
-      background-color: #f1f3f4;
-      color: #202124;
-    }
-
-    .modal-content {
-      padding: 16px 18px;
-      max-height: 380px;
-      overflow-y: auto;
-      font-size: 11.5px;
-      line-height: 1.5;
-      color: #3c4043;
-    }
-    .modal-content p {
-      margin-bottom: 10px;
-    }
-    .modal-content ul {
-      margin-left: 18px;
-      margin-bottom: 12px;
-    }
-    .modal-content li {
-      margin-bottom: 6px;
-    }
-    .modal-content strong {
-      color: #202124;
-    }
-
-    /* Barra de scroll limpia */
-    .modal-content::-webkit-scrollbar {
-      width: 5px;
-    }
-    .modal-content::-webkit-scrollbar-thumb {
-      background-color: #dadce0;
-      border-radius: 4px;
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
 
-  <!-- Botón que activa la ventana -->
-  <button class="badge-btn" onclick="document.getElementById('modalHelp').showModal()" title="Cómo navegar y usar la herramienta">i</button>
+  <!-- Al hacer clic, ejecuta window.open con dimensiones de ventana emergente -->
+  <button class="badge-btn" onclick="abrirGuia()" title="Cómo navegar y usar la herramienta">i</button>
 
-  <!-- Ventana emergente -->
-  <dialog id="modalHelp">
-    <div class="modal-header">
-      <h3>Cómo navegar y usar la herramienta</h3>
-      <button class="close-btn" onclick="document.getElementById('modalHelp').close()">&times;</button>
-    </div>
-    <div class="modal-content">
-      <p><strong>Aplicar filtros de búsqueda:</strong> Utilizar los menús desplegables para adaptar la información de acuerdo a las necesidades de consulta.</p>
-      <ul>
-        <li><strong>¿Dónde ocurrió?</strong> Seleccionar por Ubicación geográfica (departamentos o municipios).</li>
-        <li><strong>¿Qué tema busca?</strong> Se puede elegir según los Términos temáticos principales (ej. cubrimiento periodístico, investigaciones judiciales, actuaciones de la fuerza pública, víctimas).</li>
-        <li><strong>¿Qué tipo de material necesita?</strong> Filtrar por Tipo documental (prensa, expedientes, informes, testimonios, etc.).</li>
-        <li><strong>¿De dónde viene la información?</strong> Selecciona según el Fondo o fuente de origen de los documentos.</li>
-      </ul>
-
-      <p><strong>Analizar los datos:</strong> Al seleccionar cualquier filtro, las gráficas y estadísticas se actualizarán automáticamente para ofrecerte una vista panorámica del tema o periodo elegido.</p>
-
-      <p><strong>Consultar los documentos:</strong> Dar clic sobre los resultados para acceder al detalle de la información y utilizarla de acuerdo a los procesos de consulta.</p>
-
-      <p><strong>Reiniciar y/o limpiar la búsqueda:</strong> Si desea comenzar una nueva consulta, limpiar los filtros seleccionados para restablecer la vista general.</p>
-    </div>
-  </dialog>
+  <script>
+    function abrirGuia() {
+      const urlGuia = 'https://jeisonsabogal.github.io/EnlacesDataStudio/guia_texto.html';
+      const ancho = 540;
+      const alto = 620;
+      const left = (screen.width - ancho) / 2;
+      const top = (screen.height - alto) / 2;
+      
+      window.open(
+        urlGuia, 
+        'GuiaNavegacion', 
+        `width=${ancho},height=${alto},top=${top},left=${left},scrollbars=yes,resizable=yes`
+      );
+    }
+  </script>
 
 </body>
 </html>
