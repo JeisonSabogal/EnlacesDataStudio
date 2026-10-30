@@ -8,20 +8,26 @@
       margin: 0;
       padding: 0;
     }
+    /* Ocultar scrollbars en todos los navegadores */
     html, body {
       background: transparent !important;
-      overflow: visible !important;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      overflow: hidden !important;
+      -ms-overflow-style: none;  /* IE y Edge */
+      scrollbar-width: none;  /* Firefox */
       width: 100%;
       height: 100%;
     }
-    /* Contenedor anclado abajo a la izquierda */
+    html::-webkit-scrollbar, body::-webkit-scrollbar {
+      display: none; /* Chrome, Safari y Looker Studio */
+    }
+
     .container {
       position: absolute;
       bottom: 2px;
       left: 2px;
       display: inline-block;
       cursor: help;
+      background: transparent !important;
     }
     .badge {
       width: 18px;
@@ -40,12 +46,11 @@
     .badge:hover {
       background-color: #1a73e8;
     }
-    /* El cartel flota HACIA ARRIBA del icono */
     .tooltip {
       visibility: hidden;
       opacity: 0;
       position: absolute;
-      bottom: 26px; /* Despliega por encima del icono */
+      bottom: 26px;
       left: 0;
       width: 220px;
       background-color: #202124;
@@ -59,7 +64,6 @@
       pointer-events: none;
       transition: opacity 0.2s ease, visibility 0.2s ease;
     }
-    /* Flecha decorativa apuntando hacia abajo */
     .tooltip::after {
       content: "";
       position: absolute;
