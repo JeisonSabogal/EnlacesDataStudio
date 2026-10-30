@@ -1,51 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8">
   <style>
-    body { margin: 0; padding: 4px; font-family: sans-serif; background: transparent; }
-    .tooltip-box {
-      position: relative;
-      display: inline-block;
-      cursor: help;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .icon {
-      background: #5f6368;
-      color: white;
+    html, body {
+      background: transparent !important;
+      overflow: hidden !important; /* Elimina definitivamente las barras de scroll */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      width: 100%;
+      height: 100%;
+    }
+    .tooltip-container {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      padding: 4px;
+      cursor: pointer;
+    }
+    .info-circle {
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
-      width: 16px;
-      height: 16px;
+      background-color: #5f6368;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 600;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
-      font-weight: bold;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+      user-select: none;
     }
-    .tooltip-text {
+    .info-circle:hover {
+      background-color: #1a73e8;
+      transform: scale(1.08);
+    }
+    .tooltip-content {
       visibility: hidden;
       opacity: 0;
-      width: 180px;
-      background: #202124;
-      color: #fff;
-      font-size: 11px;
-      border-radius: 4px;
-      padding: 6px 8px;
       position: absolute;
-      top: 22px;
+      top: 28px;
       left: 0;
-      z-index: 999;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      transition: opacity 0.2s;
+      width: 220px;
+      background-color: #202124;
+      color: #ffffff;
+      font-size: 11px;
+      line-height: 1.45;
+      font-weight: 400;
+      padding: 8px 12px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      z-index: 1000;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+      pointer-events: none;
     }
-    .tooltip-box:hover .tooltip-text {
+    /* Flecha decorativa superior del letrero */
+    .tooltip-content::before {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 8px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent #202124 transparent;
+    }
+    .tooltip-container:hover .tooltip-content {
       visibility: visible;
       opacity: 1;
     }
   </style>
 </head>
 <body>
-  <div class="tooltip-box">
-    <div class="icon">?</div>
-    <div class="tooltip-text">Selecciona el rango de fechas para actualizar los mapas y el conteo de registros.</div>
+  <div class="tooltip-container">
+    <div class="info-circle">?</div>
+    <div class="tooltip-content">
+      Selecciona una fecha o periodo cronológico para filtrar los documentos y mapas.
+    </div>
   </div>
 </body>
 </html>
