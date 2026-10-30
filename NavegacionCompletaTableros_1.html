@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="es" style="background: transparent !important; background-color: rgba(0,0,0,0) !important;">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="color-scheme" content="light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * {
       box-sizing: border-box;
@@ -11,144 +11,129 @@
     }
     html, body {
       background: transparent !important;
-      background-color: transparent !important;
       overflow: hidden !important;
       width: 100%;
       height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Contenedor en la esquina superior izquierda */
-    .container {
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      display: inline-block;
-      cursor: help;
-    }
-
-    /* Icono 'i' destacado */
-    .badge-info {
-      width: 28px;
-      height: 28px;
+    /* Icono 'i' idéntico al actual */
+    .badge-btn {
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       background-color: #1a73e8;
       color: #ffffff;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       font-family: Georgia, serif;
       font-style: italic;
       display: flex;
       align-items: center;
       justify-content: center;
-      user-select: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-      transition: transform 0.15s ease, background-color 0.2s ease;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: background-color 0.2s, transform 0.15s;
     }
-
-    .container:hover .badge-info {
+    .badge-btn:hover {
       background-color: #1557b0;
       transform: scale(1.08);
     }
 
-    /* Globo blanco con sombra suave y scroll interno adaptable */
-    .tooltip-box {
-      visibility: hidden;
-      opacity: 0;
-      position: absolute;
-      top: 36px;
-      left: 0;
-      width: 380px;
-      max-height: 480px;
-      overflow-y: auto;
-      background-color: #ffffff;
+    /* Ventana emergente modal que flota por encima de todo */
+    dialog {
+      border: none;
+      border-radius: 10px;
+      padding: 0;
+      width: 90vw;
+      max-width: 440px;
+      background: #ffffff;
       color: #202124;
-      border: 1px solid #dadce0;
-      border-radius: 8px;
-      padding: 16px 18px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      z-index: 99999;
-      pointer-events: auto;
-      transition: opacity 0.2s ease, visibility 0.2s ease;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+      outline: none;
+    }
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.35);
     }
 
-    /* Flecha orientada al icono */
-    .tooltip-box::before {
-      content: "";
-      position: absolute;
-      bottom: 100%;
-      left: 8px;
-      border-width: 6px;
-      border-style: solid;
-      border-color: transparent transparent #dadce0 transparent;
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid #ebebeb;
     }
-    .tooltip-box::after {
-      content: "";
-      position: absolute;
-      bottom: 100%;
-      left: 9px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: transparent transparent #ffffff transparent;
-    }
-
-    .container:hover .tooltip-box {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    /* Tipografía y secciones del contenido */
-    .tooltip-box h3 {
+    .modal-header h3 {
       font-size: 14px;
       font-weight: 700;
       color: #1a73e8;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #ebebeb;
-      padding-bottom: 6px;
+    }
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 18px;
+      color: #5f6368;
+      cursor: pointer;
+      font-weight: bold;
+      line-height: 1;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .close-btn:hover {
+      background-color: #f1f3f4;
+      color: #202124;
     }
 
-    .tooltip-box p {
+    .modal-content {
+      padding: 16px 18px;
+      max-height: 380px;
+      overflow-y: auto;
       font-size: 11.5px;
       line-height: 1.5;
       color: #3c4043;
-      margin-bottom: 8px;
     }
-
-    .tooltip-box ul {
-      margin-left: 18px;
+    .modal-content p {
       margin-bottom: 10px;
     }
-
-    .tooltip-box li {
-      font-size: 11px;
-      line-height: 1.45;
-      color: #4a4d51;
-      margin-bottom: 5px;
+    .modal-content ul {
+      margin-left: 18px;
+      margin-bottom: 12px;
+    }
+    .modal-content li {
+      margin-bottom: 6px;
+    }
+    .modal-content strong {
+      color: #202124;
     }
 
-    .tooltip-box strong {
-      color: #1f2024;
-    }
-
-    /* Estilo sutil para scrollbar interno si el texto es largo */
-    .tooltip-box::-webkit-scrollbar {
+    /* Barra de scroll limpia */
+    .modal-content::-webkit-scrollbar {
       width: 5px;
     }
-    .tooltip-box::-webkit-scrollbar-thumb {
-      background-color: #d1d5db;
+    .modal-content::-webkit-scrollbar-thumb {
+      background-color: #dadce0;
       border-radius: 4px;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="badge-info">i</div>
-    <div class="tooltip-box">
+  <!-- Botón que activa la ventana -->
+  <button class="badge-btn" onclick="document.getElementById('modalHelp').showModal()" title="Cómo navegar y usar la herramienta">i</button>
+
+  <!-- Ventana emergente -->
+  <dialog id="modalHelp">
+    <div class="modal-header">
       <h3>Cómo navegar y usar la herramienta</h3>
-      
+      <button class="close-btn" onclick="document.getElementById('modalHelp').close()">&times;</button>
+    </div>
+    <div class="modal-content">
       <p><strong>Aplicar filtros de búsqueda:</strong> Utilizar los menús desplegables para adaptar la información de acuerdo a las necesidades de consulta.</p>
-      
       <ul>
         <li><strong>¿Dónde ocurrió?</strong> Seleccionar por Ubicación geográfica (departamentos o municipios).</li>
         <li><strong>¿Qué tema busca?</strong> Se puede elegir según los Términos temáticos principales (ej. cubrimiento periodístico, investigaciones judiciales, actuaciones de la fuerza pública, víctimas).</li>
@@ -162,7 +147,7 @@
 
       <p><strong>Reiniciar y/o limpiar la búsqueda:</strong> Si desea comenzar una nueva consulta, limpiar los filtros seleccionados para restablecer la vista general.</p>
     </div>
-  </div>
+  </dialog>
 
 </body>
 </html>
