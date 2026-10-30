@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="es" style="background: transparent !important; background-color: rgba(0,0,0,0) !important;">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="color-scheme" content="light">
   <style>
     * {
       box-sizing: border-box;
@@ -11,86 +10,44 @@
     }
     html, body {
       background: transparent !important;
-      background-color: transparent !important;
       overflow: hidden !important;
       width: 100%;
       height: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-
-    /* Contenedor anclado en la esquina inferior izquierda */
-    .container {
-      position: absolute;
-      bottom: 4px;
-      left: 4px;
-      display: inline-block;
-      cursor: help;
-    }
-
     .badge {
       width: 18px;
       height: 18px;
       border-radius: 50%;
       background-color: #5f6368;
       color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       font-size: 11px;
       font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
       user-select: none;
-      transition: background-color 0.2s ease;
+      transition: background-color 0.2s, transform 0.1s;
+      border: none;
+      outline: none;
     }
-
-    .container:hover .badge {
+    .badge:hover {
       background-color: #1a73e8;
-    }
-
-    /* Cartel con ancho autoajustable y sin salirse */
-    .tooltip {
-      visibility: hidden;
-      opacity: 0;
-      position: absolute;
-      bottom: 26px;
-      left: 0;
-      width: 210px;
-      background-color: #202124;
-      color: #ffffff;
-      font-size: 11px;
-      line-height: 1.4;
-      padding: 8px 10px;
-      border-radius: 6px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-      z-index: 9999;
-      pointer-events: none;
-      transition: opacity 0.15s ease, visibility 0.15s ease;
-      word-wrap: break-word;
-      white-space: normal;
-    }
-
-    /* Flecha hacia abajo */
-    .tooltip::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: #202124 transparent transparent transparent;
-    }
-
-    .container:hover .tooltip {
-      visibility: visible;
-      opacity: 1;
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="badge">?</div>
-    <div class="tooltip">
-      Selecciona una fecha o periodo cronológico para filtrar los documentos y mapas.
-    </div>
-  </div>
+  <!-- El title nativo muestra el tooltip clásico del navegador sin requerir espacio extra -->
+  <button 
+    class="badge" 
+    title="Filtro de Fecha: Selecciona una fecha o periodo cronológico para filtrar los documentos y mapas."
+    onclick="alert('Filtro de Fecha:\n\nSelecciona una fecha o periodo cronológico para filtrar los documentos y mapas.')">
+    ?
+  </button>
 </body>
 </html>
