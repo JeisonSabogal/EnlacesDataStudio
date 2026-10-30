@@ -15,16 +15,17 @@
       width: 100%;
       height: 100%;
     }
-    .wrapper {
+    /* Contenedor anclado abajo a la izquierda */
+    .container {
       position: absolute;
-      bottom: 2px; /* Anclado al fondo para crecer hacia arriba */
+      bottom: 2px;
       left: 2px;
       display: inline-block;
       cursor: help;
     }
-    .icon {
-      width: 16px;
-      height: 16px;
+    .badge {
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       background-color: #5f6368;
       color: #ffffff;
@@ -36,46 +37,49 @@
       user-select: none;
       transition: background-color 0.2s ease;
     }
-    .icon:hover {
+    .badge:hover {
       background-color: #1a73e8;
     }
-    /* El tooltip ahora se despliega HACIA ARRIBA */
+    /* El cartel flota HACIA ARRIBA del icono */
     .tooltip {
-      display: none;
+      visibility: hidden;
+      opacity: 0;
       position: absolute;
-      bottom: 24px; /* Abre hacia arriba del icono */
+      bottom: 26px; /* Despliega por encima del icono */
       left: 0;
-      width: 190px;
+      width: 220px;
       background-color: #202124;
       color: #ffffff;
       font-size: 11px;
-      line-height: 1.4;
+      line-height: 1.45;
       padding: 8px 10px;
       border-radius: 6px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
       z-index: 9999;
       pointer-events: none;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
     }
     /* Flecha decorativa apuntando hacia abajo */
     .tooltip::after {
       content: "";
       position: absolute;
       top: 100%;
-      left: 5px;
+      left: 6px;
       border-width: 5px;
       border-style: solid;
       border-color: #202124 transparent transparent transparent;
     }
-    .wrapper:hover .tooltip {
-      display: block;
+    .container:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="icon">?</div>
+  <div class="container">
+    <div class="badge">?</div>
     <div class="tooltip">
-      Selecciona el rango de fechas para actualizar los mapas y el conteo de registros.
+      Selecciona una fecha o periodo cronológico para filtrar los documentos y mapas.
     </div>
   </div>
 </body>
