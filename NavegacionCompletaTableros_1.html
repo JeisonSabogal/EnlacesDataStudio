@@ -18,12 +18,12 @@
       justify-content: center;
     }
 
-    /* Icono 'i' del tamaño exacto del recuadro */
+    /* Botón 'i' con el amarillo institucional del isotipo */
     .badge-btn {
       width: 26px;
       height: 26px;
       border-radius: 50%;
-      background-color: #1a73e8;
+      background-color: #F5A823; /* Amarillo del logo CNMH */
       color: #ffffff;
       font-size: 15px;
       font-weight: 700;
@@ -35,18 +35,18 @@
       cursor: pointer;
       border: none;
       outline: none;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.25);
-      transition: background-color 0.2s, transform 0.15s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.22);
+      transition: background-color 0.2s ease, transform 0.15s ease;
     }
     .badge-btn:hover {
-      background-color: #1557b0;
+      background-color: #D98F15; /* Tono de hover más intenso */
       transform: scale(1.1);
     }
   </style>
 </head>
 <body>
 
-  <!-- Al hacer clic, ejecuta window.open con dimensiones de ventana emergente -->
+  <!-- Al hacer clic, abre la ventana flotante centrada -->
   <button class="badge-btn" onclick="abrirGuia()" title="Cómo navegar y usar la herramienta">i</button>
 
   <script>
