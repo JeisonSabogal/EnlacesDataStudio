@@ -12,13 +12,13 @@
     html, body {
       background: transparent !important;
       background-color: transparent !important;
-      overflow: visible !important;
+      overflow: hidden !important;
       width: 100%;
       height: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Anclado en la esquina superior izquierda */
+    /* Contenedor en la esquina superior izquierda */
     .container {
       position: absolute;
       top: 4px;
@@ -27,7 +27,7 @@
       cursor: help;
     }
 
-    /* Icono 'i' más grande */
+    /* Icono 'i' destacado */
     .badge-info {
       width: 28px;
       height: 28px;
@@ -51,26 +51,28 @@
       transform: scale(1.08);
     }
 
-    /* Globo blanco con letras negras */
+    /* Globo blanco con sombra suave y scroll interno adaptable */
     .tooltip-box {
       visibility: hidden;
       opacity: 0;
       position: absolute;
       top: 36px;
       left: 0;
-      width: 360px;
+      width: 380px;
+      max-height: 480px;
+      overflow-y: auto;
       background-color: #ffffff;
       color: #202124;
       border: 1px solid #dadce0;
       border-radius: 8px;
-      padding: 16px;
+      padding: 16px 18px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
       z-index: 99999;
       pointer-events: auto;
       transition: opacity 0.2s ease, visibility 0.2s ease;
     }
 
-    /* Flecha hacia arriba apuntando al icono */
+    /* Flecha orientada al icono */
     .tooltip-box::before {
       content: "";
       position: absolute;
@@ -95,37 +97,46 @@
       opacity: 1;
     }
 
-    /* Estilos del texto interior */
+    /* Tipografía y secciones del contenido */
     .tooltip-box h3 {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
       color: #1a73e8;
       margin-bottom: 10px;
-      border-bottom: 1px solid #eeeeee;
-      padding-bottom: 5px;
+      border-bottom: 1px solid #ebebeb;
+      padding-bottom: 6px;
     }
 
     .tooltip-box p {
-      font-size: 11px;
-      line-height: 1.45;
+      font-size: 11.5px;
+      line-height: 1.5;
       color: #3c4043;
       margin-bottom: 8px;
     }
 
     .tooltip-box ul {
-      margin-left: 16px;
+      margin-left: 18px;
       margin-bottom: 10px;
     }
 
     .tooltip-box li {
       font-size: 11px;
       line-height: 1.45;
-      color: #3c4043;
-      margin-bottom: 4px;
+      color: #4a4d51;
+      margin-bottom: 5px;
     }
 
     .tooltip-box strong {
-      color: #202124;
+      color: #1f2024;
+    }
+
+    /* Estilo sutil para scrollbar interno si el texto es largo */
+    .tooltip-box::-webkit-scrollbar {
+      width: 5px;
+    }
+    .tooltip-box::-webkit-scrollbar-thumb {
+      background-color: #d1d5db;
+      border-radius: 4px;
     }
   </style>
 </head>
@@ -137,5 +148,21 @@
       <h3>Cómo navegar y usar la herramienta</h3>
       
       <p><strong>Aplicar filtros de búsqueda:</strong> Utilizar los menús desplegables para adaptar la información de acuerdo a las necesidades de consulta.</p>
+      
       <ul>
-        <li><strong>¿Dónde ocurrió?</strong> Seleccionar por Ubicación geográfica (
+        <li><strong>¿Dónde ocurrió?</strong> Seleccionar por Ubicación geográfica (departamentos o municipios).</li>
+        <li><strong>¿Qué tema busca?</strong> Se puede elegir según los Términos temáticos principales (ej. cubrimiento periodístico, investigaciones judiciales, actuaciones de la fuerza pública, víctimas).</li>
+        <li><strong>¿Qué tipo de material necesita?</strong> Filtrar por Tipo documental (prensa, expedientes, informes, testimonios, etc.).</li>
+        <li><strong>¿De dónde viene la información?</strong> Selecciona según el Fondo o fuente de origen de los documentos.</li>
+      </ul>
+
+      <p><strong>Analizar los datos:</strong> Al seleccionar cualquier filtro, las gráficas y estadísticas se actualizarán automáticamente para ofrecerte una vista panorámica del tema o periodo elegido.</p>
+
+      <p><strong>Consultar los documentos:</strong> Dar clic sobre los resultados para acceder al detalle de la información y utilizarla de acuerdo a los procesos de consulta.</p>
+
+      <p><strong>Reiniciar y/o limpiar la búsqueda:</strong> Si desea comenzar una nueva consulta, limpiar los filtros seleccionados para restablecer la vista general.</p>
+    </div>
+  </div>
+
+</body>
+</html>
