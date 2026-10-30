@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es" style="background: transparent !important; background-color: rgba(0,0,0,0) !important;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      background: transparent !important;
+      background-color: transparent !important;
+      overflow: visible !important;
+      width: 100%;
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    /* Anclado en la esquina superior izquierda */
+    .container {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      display: inline-block;
+      cursor: help;
+    }
+
+    /* Icono 'i' más grande */
+    .badge-info {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: #1a73e8;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: Georgia, serif;
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+      transition: transform 0.15s ease, background-color 0.2s ease;
+    }
+
+    .container:hover .badge-info {
+      background-color: #1557b0;
+      transform: scale(1.08);
+    }
+
+    /* Globo blanco con letras negras */
+    .tooltip-box {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      top: 36px;
+      left: 0;
+      width: 360px;
+      background-color: #ffffff;
+      color: #202124;
+      border: 1px solid #dadce0;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      z-index: 99999;
+      pointer-events: auto;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    /* Flecha hacia arriba apuntando al icono */
+    .tooltip-box::before {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 8px;
+      border-width: 6px;
+      border-style: solid;
+      border-color: transparent transparent #dadce0 transparent;
+    }
+    .tooltip-box::after {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 9px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent #ffffff transparent;
+    }
+
+    .container:hover .tooltip-box {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Estilos del texto interior */
+    .tooltip-box h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a73e8;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #eeeeee;
+      padding-bottom: 5px;
+    }
+
+    .tooltip-box p {
+      font-size: 11px;
+      line-height: 1.45;
+      color: #3c4043;
+      margin-bottom: 8px;
+    }
+
+    .tooltip-box ul {
+      margin-left: 16px;
+      margin-bottom: 10px;
+    }
+
+    .tooltip-box li {
+      font-size: 11px;
+      line-height: 1.45;
+      color: #3c4043;
+      margin-bottom: 4px;
+    }
+
+    .tooltip-box strong {
+      color: #202124;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="badge-info">i</div>
+    <div class="tooltip-box">
+      <h3>Cómo navegar y usar la herramienta</h3>
+      
+      <p><strong>Aplicar filtros de búsqueda:</strong> Utilizar los menús desplegables para adaptar la información de acuerdo a las necesidades de consulta.</p>
+      <ul>
+        <li><strong>¿Dónde ocurrió?</strong> Seleccionar por Ubicación geográfica (
