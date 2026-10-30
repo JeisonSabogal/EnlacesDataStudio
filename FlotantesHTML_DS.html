@@ -1,34 +1,32 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="background: transparent !important; background-color: rgba(0,0,0,0) !important;">
 <head>
   <meta charset="UTF-8">
+  <meta name="color-scheme" content="light">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    /* Ocultar scrollbars en todos los navegadores */
     html, body {
       background: transparent !important;
+      background-color: transparent !important;
       overflow: hidden !important;
-      -ms-overflow-style: none;  /* IE y Edge */
-      scrollbar-width: none;  /* Firefox */
       width: 100%;
       height: 100%;
-    }
-    html::-webkit-scrollbar, body::-webkit-scrollbar {
-      display: none; /* Chrome, Safari y Looker Studio */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
+    /* Contenedor anclado en la esquina inferior izquierda */
     .container {
       position: absolute;
-      bottom: 2px;
-      left: 2px;
+      bottom: 4px;
+      left: 4px;
       display: inline-block;
       cursor: help;
-      background: transparent !important;
     }
+
     .badge {
       width: 18px;
       height: 18px;
@@ -43,36 +41,44 @@
       user-select: none;
       transition: background-color 0.2s ease;
     }
-    .badge:hover {
+
+    .container:hover .badge {
       background-color: #1a73e8;
     }
+
+    /* Cartel con ancho autoajustable y sin salirse */
     .tooltip {
       visibility: hidden;
       opacity: 0;
       position: absolute;
       bottom: 26px;
       left: 0;
-      width: 220px;
+      width: 210px;
       background-color: #202124;
       color: #ffffff;
       font-size: 11px;
-      line-height: 1.45;
+      line-height: 1.4;
       padding: 8px 10px;
       border-radius: 6px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
       z-index: 9999;
       pointer-events: none;
-      transition: opacity 0.2s ease, visibility 0.2s ease;
+      transition: opacity 0.15s ease, visibility 0.15s ease;
+      word-wrap: break-word;
+      white-space: normal;
     }
+
+    /* Flecha hacia abajo */
     .tooltip::after {
       content: "";
       position: absolute;
       top: 100%;
-      left: 6px;
+      left: 5px;
       border-width: 5px;
       border-style: solid;
       border-color: #202124 transparent transparent transparent;
     }
+
     .container:hover .tooltip {
       visibility: visible;
       opacity: 1;
