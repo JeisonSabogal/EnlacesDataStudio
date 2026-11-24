@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <style>
+    /* Reinicio general */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
+    /* Lienzo transparente y centrado */
     html, body {
       background: transparent !important;
       overflow: hidden !important;
@@ -18,14 +21,14 @@
       justify-content: center;
     }
 
-    /* Botón amarillo con la "i" más grande */
+    /* Botón amarillo grande con la "i" */
     .badge-btn {
-      width: 36px;               /* Ancho del círculo (antes 26px) */
-      height: 36px;              /* Alto del círculo (antes 26px) */
+      width: 44px;               /* Ancho del círculo amarillo */
+      height: 44px;              /* Alto del círculo amarillo */
       border-radius: 50%;
       background-color: #F5A823; /* Amarillo institucional CNMH */
       color: #ffffff;
-      font-size: 21px;           /* Tamaño de la letra "i" (antes 15px) */
+      font-size: 26px;           /* Tamaño de la letra "i" */
       font-weight: 700;
       font-family: Georgia, serif;
       font-style: italic;
@@ -35,20 +38,20 @@
       cursor: pointer;
       border: none;
       outline: none;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
       transition: background-color 0.2s ease, transform 0.15s ease;
     }
 
-    /* Efecto al pasar el cursor por encima */
+    /* Efecto visual al pasar el cursor encima */
     .badge-btn:hover {
-      background-color: #D98F15; /* Amarillo más oscuro en hover */
+      background-color: #D98F15; /* Amarillo más oscuro */
       transform: scale(1.08);
     }
   </style>
 </head>
 <body>
 
-  <!-- Botón que abre la ventana emergente al hacer clic -->
+  <!-- Botón que abre la ventana emergente con el texto intacto -->
   <button class="badge-btn" onclick="abrirGuia()" title="Cómo navegar y usar la herramienta">i</button>
 
   <script>
